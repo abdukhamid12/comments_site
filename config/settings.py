@@ -23,11 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-(&a9g)l$6c4s@ea(hcubipuww3n#be%uawi$k^h_-pkg_mtj#w')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
-
-HOSTS = os.environ.get('ALLOWED_HOSTS')
-ALLOWED_HOSTS = HOSTS.split(' ') if HOSTS else []
+DEBUG = True
+# DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+#
+# HOSTS = os.environ.get('ALLOWED_HOSTS')
+# ALLOWED_HOSTS = HOSTS.split(' ') if HOSTS else []
 
 # Application definition
 
@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-url = 'postgres://my_comments_db_user:lCmqD9rbSXFahHKyk6hard5Ek2kgXpm2@dpg-cno9q1i0si5c73b3h88g-a/my_comments_db'
+url = 'postgres://back472_blog_user:G6BdUXUTjruB9deJPY6PGGBCxR4wmJNe@dpg-cno0qkn109ks73ch112g-a.oregon-postgres.render.com/back472_blog'
 database_url = os.environ.get('DATABASE_URL', url)
 DATABASES['default'] = dj_database_url.parse(database_url)
 

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,7 +24,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-(&a9g)l$6c4s@ea(hcubipuww3n#be%uawi$k^h_-pkg_mtj#w')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 HOSTS = os.environ.get('ALLOWED_HOSTS')
@@ -85,8 +85,8 @@ DATABASES = {
     }
 }
 url = 'postgres://my_comments_db_user:lCmqD9rbSXFahHKyk6hard5Ek2kgXpm2@dpg-cno9q1i0si5c73b3h88g-a/my_comments_db'
-database_url = os.environ.get('DATABASE_URL', url)
-DATABASES['default'] = dj_database_url.parse(database_url)
+DATABASES_URL = os.environ.get('DATABASES_URL', url)
+DATABASES['default'] = dj_database_url.parse(DATABASES_URL)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -121,12 +121,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# awesome_website/settings.py
+
+# Add these lines if not already present
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'iamsolijonovasadbek@mail.com'
-EMAIL_HOST_PASSWORD = 'qwerty002@#'
+EMAIL_USE_TLS = True  # Or False if not using TLS
+EMAIL_HOST_USER = 'muhammadaminabduhakimov2000@mail.com'
+EMAIL_HOST_PASSWORD = '1234'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -147,10 +150,10 @@ LOGOUT_REDIRECT_URL = "index"
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR / 'static')
-STATICFILES_DIRS = [BASE_DIR / 'blog/static']
+STATIC_FILES_DIRS = [BASE_DIR / 'blog/static/']
 
 MEDIA_URL = '/media/'  # new
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # new
+MEDIA_ROOT = BASE_DIR / 'media'  # new
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

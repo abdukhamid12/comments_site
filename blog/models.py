@@ -31,3 +31,11 @@ class Comment(models.Model):
     message = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+
+class ClientInfo(models.Model):
+    user = models.CharField(max_length=50)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=13)
+    message = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
